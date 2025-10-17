@@ -6,6 +6,8 @@ const express = require('express');
 // Importamos cors
 const cors = require('cors');
 
+const authRoutes = require('./routes/authRoutes');
+
 // Creamos la aplicación de express
 const app = express();
 
@@ -19,6 +21,9 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.send('¡El servidor backend está funcionando!');
 });
+
+// Rutas para el login
+app.use('/api/auth', authRoutes);
 
 // Definimos el puerto en el que correrá el servidor
 const PORT = process.env.PORT || 3000;
